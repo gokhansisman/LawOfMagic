@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low of Magic</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+
+        <div class="logs-container"></div>
+    </div>
+
+    <div hidden id="log-clone">
+        <div class="log">
+            <div class="coorinate">
+                <div>Latitude: <span>$LAT</span></div>
+                <div>Longitude: <span>$LNG</span></div>
+            </div>
+            <div class="date">$DATE</div>
+            <div class="go-to" onclick="goToCoordinate($LAT, $LNG)">Konuma Git</div>
+        </div>
+    </div>
+
+    <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 38.931884, lng: 35.627969 },
+                zoom: 6,
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly&channel=2"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

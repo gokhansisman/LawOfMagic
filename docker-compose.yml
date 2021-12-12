@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  backend:
+    image: node:16-alpine
+    volumes:
+      - ./server/:/opt/server
+    working_dir: /opt/server
+    command: 'npm start'
+    restart: always
+    ports:
+      - 8080:8080
