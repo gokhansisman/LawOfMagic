@@ -6,6 +6,7 @@ Bu proje Üçbüyücü Turnuvası içerisinde açık kaynaklı olarak geliştiri
 Mobil uygulama açıldığında uygulama ortam seslerini dinlemeye başlamaktadır. Uygulama ses yüksekliğini ve tehdit unsuru içeren kelimeleri algılar. Örneğin, konuşma içerisinde “öldür-mek”, “döv-mek” gibi şiddet içeren kelimeleri tespit etmektedir. Tehdit algılama durumunda kişinin konum bilgisini sunucuya göndermektedir.
 
 Konum bilgileri sunucuda harita üzerinde canlı olarak gösterilmektedir. 
+Tehdit içeren cümleler mobill uygulama içerisinde saptanır ve sunucuya sadece konum bilgisi gönderilerek kişinin gizlilik ilkelerine sağdık kalınır.
 
 ## Amaç
 Türkiye'de azımsanmayacak kadar çok kadın şiddete maruz kalmaktadır. BBC'nin 2021 verilerine göre her 10 kadından 4'ü yaşamının bir döneminde şiddete maruz kalmaktadır. Bu konuyla ilgili çeşitli çalışmalar yapılmakta olsa da efektif bir çözüm malesef ki uygulamaya konulamamıştır. Geliştirdiğimiz ürün kadın şiddet vakalarına yönelik proaktif bir önlem niteliği taşımaktadır ve şiddet vakalarını mümkün olan en kısa zamanda ilgili birimlere bildirmeyi amaçlamaktadır.
