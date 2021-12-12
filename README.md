@@ -50,8 +50,8 @@ Koordinat bilgileri: http://localhost:8080/api/coordinates
 `cd .. && npx react-native run-ios`
 
 # Ekran Görüntüleri
-![ss1](https://www.hizliresim.com/gqq329z)
-![ss2](https://www.hizliresim.com/qv7kwzb)
+![ss1](https://i.hizliresim.com/gqq329z.png)
+![ss2](https://i.hizliresim.com/qv7kwzb.png)
 
 # Demo
 
