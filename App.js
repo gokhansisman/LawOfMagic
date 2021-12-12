@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
+  Image,
   SafeAreaView,
   TouchableOpacity,
   TextInput,
@@ -12,6 +12,7 @@ import {
 import RNSoundLevel from "react-native-sound-level";
 import Voice from "@react-native-community/voice";
 import Geolocation from "react-native-geolocation-service";
+
 export default function App() {
   const appState = useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
@@ -38,7 +39,7 @@ export default function App() {
 
   const [volume, setVolume] = useState(null);
   const [results, setResults] = useState("");
-  const [isGranted, setIsGranted] = useState("");
+  const [isListening, setIsListening] = useState(false);
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
 
@@ -98,6 +99,7 @@ export default function App() {
     RNSoundLevel.onNewFrame = (data) => {
       // see "Returned data" section below
       setVolume(data.rawValue);
+      setIsListening(true);
     };
     try {
       await Voice.start("tr-TR");
@@ -107,6 +109,7 @@ export default function App() {
   };
   const stopRecording = async () => {
     RNSoundLevel.stop();
+    setIsListening(false);
     try {
       await Voice.stop();
     } catch (error) {
@@ -117,6 +120,12 @@ export default function App() {
     <View style={styles.container}>
       <SafeAreaView>
         <View>
+          {isListening && (
+            <Image
+              style={styles.listeningGif}
+              source={require("./sound.gif")}
+            />
+          )}
           <Text style={priority === "normal" ? styles.normal : styles.high}>
             Priority: {priority}
           </Text>
@@ -129,9 +138,21 @@ export default function App() {
           <View style={styles.buttonsContainer}>
             <TouchableOpacity onPress={startRecording}>
               <Text style={styles.text}>Start</Text>
+              <Image
+                style={styles.logo}
+                source={{
+                  uri: "https://www.iconpacks.net/icons/1/free-microphone-icon-342-thumb.png",
+                }}
+              />
             </TouchableOpacity>
             <TouchableOpacity onPress={stopRecording}>
               <Text style={styles.text}>Stop</Text>
+              <Image
+                style={styles.logo}
+                source={{
+                  uri: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-pause-512.png",
+                }}
+              />
             </TouchableOpacity>
           </View>
           <Text style={styles.locationHeader}>Location</Text>
@@ -172,5 +193,20 @@ const styles = StyleSheet.create({
   },
   high: {
     color: "red",
+  },
+  logo: {
+    marginTop: 4,
+    width: 20,
+    height: 18,
+    marginLeft: 4,
+    cursor: "pointer",
+  },
+  listeningGif: {
+    width: 50,
+    height: 30,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
