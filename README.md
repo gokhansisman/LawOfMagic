@@ -50,8 +50,8 @@ Koordinat bilgileri: http://localhost:8080/api/coordinates
 `cd .. && npx react-native run-ios`
 
 # Ekran Görüntüleri
-![ss1](https://github.com/gokhansisman/LawOfMagic/blob/main/app/ss1.png)
-![ss2](https://github.com/gokhansisman/LawOfMagic/blob/main/app/ss2.png)
+![ss1](https://www.hizliresim.com/gqq329z)
+![ss2](https://www.hizliresim.com/qv7kwzb)
 
 # Demo
 
