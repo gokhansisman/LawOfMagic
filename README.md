@@ -55,9 +55,9 @@ Koordinat bilgileri: http://localhost:8080/api/coordinates
 
 # Demo
 
-https://youtu.be/NLbSoEaGYqU
+[https://youtu.be/NLbSoEaGYqU](https://youtu.be/NLbSoEaGYqU)
 
 # Geliştiriciler
 
-- Gökhan Şişman @gokhansisman
-- Metin Sarıtaş @metinsaritas
+- Gökhan Şişman [@gokhansisman](https://github.com/gokhansisman)
+- Metin Sarıtaş [@metinsaritas](https://github.com/metinsaritas)
