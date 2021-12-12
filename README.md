@@ -49,8 +49,8 @@ Koordinat bilgileri: http://localhost:8080/api/coordinates
 `cd .. && npx react-native run-ios`
 
 # Ekran Görüntüleri
-![alt text](https://github.com/gokhansisman/LawOfMagic/tree/main/app/ss1.png?raw=true)
-![alt text](https://github.com/gokhansisman/LawOfMagic/tree/main/app/ss2.png?raw=true)
+![ss1](https://github.com/gokhansisman/LawOfMagic/blob/main/app/ss1.png)
+![ss2](https://github.com/gokhansisman/LawOfMagic/blob/main/app/ss2.png)
 
 # Demo
 
