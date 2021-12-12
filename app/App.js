@@ -40,11 +40,23 @@ export default function App() {
   const [volume, setVolume] = useState(null);
   const [results, setResults] = useState("");
   const [isListening, setIsListening] = useState(false);
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  let lat = 0;
+  let lng = 0;
+  let _text = "";
+  const dangerousWords = [
+    "öldür",
+    "kes",
+    "nefret",
+    "mezar",
+    "vur",
+    "döv",
+    "kır",
+  ];
 
   useEffect(() => {
-    if (results.includes("Öldürmek")) {
+    if (results.includes("öldürmek")) {
       console.log("tehlike..");
       setPriority("high");
     }
@@ -55,10 +67,38 @@ export default function App() {
       console.log("inbackground");
     }
   });
+
+  const detectDanger = (text) => {
+    _text = ""
+    const settings = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ lat: lat, lng: lng }),
+    };
+
+    for (let word of dangerousWords) {
+      if (text.includes(word) && volume > -10) {
+        console.log("istek");
+        fetch("http://localhost:8080/api/coordinate", settings)
+          .then((res) => res.json())
+          .then((res) => console.log(res));
+        break;
+      }
+    }
+  };
   useEffect(() => {
     Voice.onSpeechStart = onSpeechStartHandler;
     Voice.onSpeechEnd = onSpeechEndHandler;
     Voice.onSpeechResults = onSpeechResultsHandler;
+    getLocation();
+    return () => {
+      //Voice.destroy().then(Voice.removeAllListeners);
+    };
+  }, []);
+  const getLocation = () => {
     if (Platform.OS === "ios") {
       // your code using Geolocation and asking for authorisation with
 
@@ -67,6 +107,8 @@ export default function App() {
     Geolocation.getCurrentPosition(
       (position) => {
         console.log("Position", position);
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
         setLatitude(position.coords.latitude);
         setLongitude(position.coords.longitude);
       },
@@ -76,24 +118,27 @@ export default function App() {
       },
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
     );
-    return () => {
-      //Voice.destroy().then(Voice.removeAllListeners);
-    };
-  }, []);
-
+  };
   const onSpeechStartHandler = (e) => {
     console.log("start handler", e);
   };
   const onSpeechEndHandler = (e) => {
     console.log("End handler", e);
   };
-
+  console.log("Level: ", volume);
   const onSpeechResultsHandler = (e) => {
     let text = e.value[0];
-    setResults(text);
+    _text = text;
+    setResults(text.toLowerCase());
     console.log("onSpeechResultsHandler", e);
   };
-  console.log("Results: " + results);
+  useEffect(() => {
+    setInterval(function () {
+      startRecording();
+      setTimeout(stopRecording, 2800);
+    }, 3000);
+  }, []);
+
   const startRecording = async () => {
     RNSoundLevel.start();
     RNSoundLevel.onNewFrame = (data) => {
@@ -110,6 +155,8 @@ export default function App() {
   const stopRecording = async () => {
     RNSoundLevel.stop();
     setIsListening(false);
+    detectDanger(_text.toLowerCase());
+
     try {
       await Voice.stop();
     } catch (error) {
@@ -145,7 +192,7 @@ export default function App() {
                 }}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={stopRecording}>
+            <TouchableOpacity>
               <Text style={styles.text}>Stop</Text>
               <Image
                 style={styles.logo}
