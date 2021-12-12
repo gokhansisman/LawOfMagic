@@ -1,4 +1,4 @@
-# Low Of Magic
+# Law Of Magic
 ## Tanım
 Bu proje Üçbüyücü Turnuvası içerisinde açık kaynaklı olarak geliştirilmiştir. Fikrimiz, artan kadın şiddetlerine karşı bir önlem almak ve farkındalık oluşturmak üzerine tasarlanmıştır. Uygulama kullanıcıların arka plan seslerindeki şiddet içeren kelimeleri ya da belli bir desibel seviyesi üzerindeki sesleri belirleyerek, konumlarını ilgili birimlerle paylaşan ve böylelikle potansiyel şiddet vakalarını erkenden tespit ederek önlemeyi amaçlayan bir projedir. 
 
