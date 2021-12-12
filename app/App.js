@@ -182,26 +182,7 @@ export default function App() {
             placeholder="your text"
             onChangeText={(text) => setResults(text)}
           />
-          <View style={styles.buttonsContainer}>
-            <TouchableOpacity onPress={startRecording}>
-              <Text style={styles.text}>Start</Text>
-              <Image
-                style={styles.logo}
-                source={{
-                  uri: "https://www.iconpacks.net/icons/1/free-microphone-icon-342-thumb.png",
-                }}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.text}>Stop</Text>
-              <Image
-                style={styles.logo}
-                source={{
-                  uri: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-pause-512.png",
-                }}
-              />
-            </TouchableOpacity>
-          </View>
+         
           <Text style={styles.locationHeader}>Location</Text>
           <Text style={styles.text}>Latitude: {latitude}</Text>
           <Text style={styles.text}>Longitude: {longitude}</Text>
@@ -249,8 +230,8 @@ const styles = StyleSheet.create({
     cursor: "pointer",
   },
   listeningGif: {
-    width: 50,
-    height: 30,
+    width: 60,
+    height: 40,
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
