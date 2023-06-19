@@ -53,10 +53,6 @@ Koordinat bilgileri: http://localhost:8080/api/coordinates
 ![ss1](https://i.hizliresim.com/gqq329z.png)
 ![ss2](https://i.hizliresim.com/qv7kwzb.png)
 
-# Demo
-
-[https://youtu.be/NLbSoEaGYqU](https://youtu.be/NLbSoEaGYqU)
-
 # Geliştiriciler
 
 - Gökhan Şişman [@gokhansisman](https://github.com/gokhansisman)
